@@ -14,13 +14,9 @@ class TestCreateTaskdef(unittest.TestCase):
 
     
     def test_create_taskdef(self):
-        # ms since epoch
-        name = 'test-' + str(int(time.time() * 1000))
-
         output = check_output([
             'terraform',
             'plan',
-            '-var', 'name={}'.format(name),
             '-no-color',
             'test/infra'
         ]).decode('utf-8')
