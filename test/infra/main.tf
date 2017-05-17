@@ -1,13 +1,13 @@
-variable "name" {
-    description = "used to ensure taskdef updates"
-}
-
-variable "region" {
-    description = "AWS region"
-}
-
 provider "aws" {
-  region = "${var.region}"
+  skip_credentials_validation = true
+  skip_metadata_api_check     = true
+  skip_get_ec2_platforms      = true
+  skip_region_validation      = true
+  skip_requesting_account_id  = true
+  max_retries                 = 1
+  access_key                  = "a"
+  secret_key                  = "a"
+  region                      = "eu-west-1"
 }
 
 module "taskdef" {
@@ -17,7 +17,7 @@ module "taskdef" {
   container_definitions = [
     <<END
 {
-  "name": "${var.name}",
+  "name": "web",
   "image": "hello-world:latest",
   "cpu": 10,
   "memory": 128,
