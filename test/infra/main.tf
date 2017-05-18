@@ -10,10 +10,17 @@ provider "aws" {
   region                      = "eu-west-1"
 }
 
+variable "task_role_arn_param" {
+    description = "Allow the test to pass this in"
+    type = "string"
+    default = ""
+}
+
 module "taskdef" {
   source = "../.."
 
   family = "tf_ecs_taskdef_test_family"
+  task_role_arn = "${var.task_role_arn_param}"
   container_definitions = [
     <<END
 {
