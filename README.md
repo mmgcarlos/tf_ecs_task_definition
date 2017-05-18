@@ -5,10 +5,10 @@ This module creates a basic ECS Task Definition.
 ## Usage
 
     module "taskdef" {
-        source = "github.com/mergermarket/tf_ecs_task_defintion"
+        source = "github.com/mergermarket/tf_ecs_task_definition"
         
         family = "live-service-name"
-        container_defintions = [
+        container_definitions = [
             <<END
     {
         ...container definition...
