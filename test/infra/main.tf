@@ -16,11 +16,18 @@ variable "task_role_arn_param" {
     default = ""
 }
 
+variable "task_volume_param" {
+    description = "Allow the test to pass this in"
+    type = "map"
+    default = {}
+}
+
 module "taskdef" {
   source = "../.."
 
   family = "tf_ecs_taskdef_test_family"
   task_role_arn = "${var.task_role_arn_param}"
+  volume = "${var.task_volume_param}"
   container_definitions = [
     <<END
 {
