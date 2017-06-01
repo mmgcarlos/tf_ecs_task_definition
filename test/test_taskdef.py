@@ -1,10 +1,9 @@
-import unittest
 import os
-import tempfile
 import shutil
-
-from textwrap import dedent
+import tempfile
+import unittest
 from subprocess import check_call, check_output
+from textwrap import dedent
 
 
 class TestCreateTaskdef(unittest.TestCase):
