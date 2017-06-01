@@ -11,23 +11,24 @@ provider "aws" {
 }
 
 variable "task_role_arn_param" {
-    description = "The test can set this var to be passed to the module"
-    type = "string"
-    default = ""
+  description = "The test can set this var to be passed to the module"
+  type        = "string"
+  default     = ""
 }
 
 variable "task_volume_param" {
-    description = "The test can set this var to be passed to the module"
-    type = "map"
-    default = {}
+  description = "The test can set this var to be passed to the module"
+  type        = "map"
+  default     = {}
 }
 
 module "taskdef" {
   source = "../.."
 
-  family = "tf_ecs_taskdef_test_family"
+  family        = "tf_ecs_taskdef_test_family"
   task_role_arn = "${var.task_role_arn_param}"
-  volume = "${var.task_volume_param}"
+  volume        = "${var.task_volume_param}"
+
   container_definitions = [
     <<END
 {
@@ -38,9 +39,10 @@ module "taskdef" {
   "essential": true
 }
 END
+    ,
   ]
 }
 
 output "taskdef_arn" {
-    value = "${module.taskdef.arn}"
+  value = "${module.taskdef.arn}"
 }

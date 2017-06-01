@@ -1,21 +1,21 @@
 variable "family" {
-    description = "A unique name for your task defintion."
-    type = "string"
+  description = "A unique name for your task defintion."
+  type        = "string"
 }
 
 variable "container_definitions" {
-    description = "A list of valid container definitions provided as a single valid JSON document."
-    type = "list"
+  description = "A list of valid container definitions provided as a single valid JSON document."
+  type        = "list"
 }
 
 variable "task_role_arn" {
-    description = "The Amazon Resource Name for an IAM role for the task"
-    type = "string"
-    default = ""
+  description = "The Amazon Resource Name for an IAM role for the task"
+  type        = "string"
+  default     = ""
 }
 
 variable "volume" {
-    description = "Volume block map with 'name' and 'host_path'."
-    type = "map"
-    default = {}
+  description = "Volume block map with 'name' and 'host_path'."
+  type        = "map"
+  default     = {}
 }
