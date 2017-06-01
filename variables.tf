@@ -15,7 +15,7 @@ variable "task_role_arn" {
 }
 
 variable "volume" {
-    description = "Volume block map with 'name' and 'host_path'. 'name': The name of the volume as is referenced in the sourceVolume. 'host_path' The path on the host container instance that is presented to the container."
+    description = "Volume block map with 'name' and 'host_path'."
     type = "map"
     default = {}
 }

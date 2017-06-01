@@ -11,13 +11,13 @@ provider "aws" {
 }
 
 variable "task_role_arn_param" {
-    description = "Allow the test to pass this in"
+    description = "The test can set this var to be passed to the module"
     type = "string"
     default = ""
 }
 
 variable "task_volume_param" {
-    description = "Allow the test to pass this in"
+    description = "The test can set this var to be passed to the module"
     type = "map"
     default = {}
 }
