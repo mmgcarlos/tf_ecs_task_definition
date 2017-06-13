@@ -19,8 +19,3 @@ variable "volume" {
   type        = "map"
   default     = {}
 }
-
-variable "aws_region" {
-    description = "Configures region to be used in AWS Provider"
-    type = "string"
-}
