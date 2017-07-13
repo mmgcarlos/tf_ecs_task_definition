@@ -1,9 +1,9 @@
 FROM python:3-alpine
 COPY requirements.txt .
 
-ENV TERRAFORM_VERSION=0.9.5
+ENV TERRAFORM_VERSION=0.9.11
 ENV TERRAFORM_ZIP=terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-ENV TERRAFORM_SUM=0cbb5474c76d878fbc99e7705ce6117f4ea0838175c13b2663286a207e38d783
+ENV TERRAFORM_SUM=804d31cfa5fee5c2b1bff7816b64f0e26b1d766ac347c67091adccc2626e16f3
 
 ENV PYTHONDONTWRITEBYTECODE donot
 
@@ -16,4 +16,3 @@ RUN apk add -U ca-certificates curl && \
 
 RUN pip install --no-cache-dir -r requirements.txt
 ADD infra /infra
-
