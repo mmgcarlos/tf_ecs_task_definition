@@ -1,5 +1,7 @@
 # tf\_ecs\_task\_definition
 
+[![Build Status](https://travis-ci.org/mergermarket/tf_ecs_task_definition.svg?branch=master)](https://travis-ci.org/mergermarket/tf_ecs_task_definition)
+
 This module creates a basic ECS Task Definition.
 
 ## Usage
