@@ -22,12 +22,19 @@ variable "task_volume_param" {
   default     = {}
 }
 
+variable "execution_role_arn" {
+  description = "The Amazon Resource Name for an execution role for the task"
+  type        = "string"
+  default     = ""
+}
+
 module "taskdef" {
   source = "../.."
 
-  family        = "tf_ecs_taskdef_test_family"
-  task_role_arn = "${var.task_role_arn_param}"
-  volume        = "${var.task_volume_param}"
+  family             = "tf_ecs_taskdef_test_family"
+  task_role_arn      = "${var.task_role_arn_param}"
+  execution_role_arn = "${var.execution_role_arn}"
+  volume             = "${var.task_volume_param}"
 
   container_definitions = [
     <<END

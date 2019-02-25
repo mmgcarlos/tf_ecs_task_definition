@@ -14,6 +14,12 @@ variable "task_role_arn" {
   default     = ""
 }
 
+variable "execution_role_arn" {
+  description = "The Amazon Resource Name for an execution role for the task"
+  type        = "string"
+  default     = ""
+}
+
 variable "volume" {
   description = "Volume block map with 'name' and 'host_path'."
   type        = "map"
