@@ -1,5 +1,5 @@
 resource "aws_ecs_task_definition" "taskdef" {
-  family                = "${var.family}"
+  family                = "${replace(var.family, ".", "_")}"
   container_definitions = "[${join(",", var.container_definitions)}]"
   task_role_arn         = "${var.task_role_arn}"
   execution_role_arn    = "${var.execution_role_arn}"

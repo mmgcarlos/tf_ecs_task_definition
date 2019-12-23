@@ -39,7 +39,32 @@ class TestCreateTaskdef(unittest.TestCase):
       volume.3039886685.docker_volume_configuration.#: "0"
       volume.3039886685.host_path:                     "/tmp/dummy_volume"
       volume.3039886685.name:                          "dummy"
-Plan: 1 to add, 0 to change, 0 to destroy.
+        """).strip() in output
+
+        assert dedent("""
+Plan: 2 to add, 0 to change, 0 to destroy.
+        """).strip() in output
+
+    def test_create_taskdef_with_invalid_name(self):
+        output = check_output([
+            'terraform',
+            'plan',
+            '-no-color',
+            self.module_path],
+            cwd=self.workdir
+        ).decode('utf-8')
+        assert dedent("""
++ module.taskdef_with_invalid_name.aws_ecs_task_definition.taskdef
+      id:                                              <computed>
+      arn:                                             <computed>
+      container_definitions:                           "[{\\"cpu\\":10,\\"essential\\":true,\\"image\\":\\"hello-world:latest\\",\\"memory\\":128,\\"name\\":\\"web\\"}]"
+      family:                                          "tf_ecs_taskdef_test_family_something"
+      network_mode:                                    <computed>
+      revision:                                        <computed>
+      volume.#:                                        "1"
+      volume.3039886685.docker_volume_configuration.#: "0"
+      volume.3039886685.host_path:                     "/tmp/dummy_volume"
+      volume.3039886685.name:                          "dummy"
         """).strip() in output
 
     def test_task_role_arn_is_included(self):
@@ -65,7 +90,6 @@ Plan: 1 to add, 0 to change, 0 to destroy.
       volume.3039886685.docker_volume_configuration.#: "0"
       volume.3039886685.host_path:                     "/tmp/dummy_volume"
       volume.3039886685.name:                          "dummy"
-Plan: 1 to add, 0 to change, 0 to destroy.
         """).strip() in output
 
     def test_task_execution_role_arn_is_included(self):
@@ -91,7 +115,6 @@ Plan: 1 to add, 0 to change, 0 to destroy.
       volume.3039886685.docker_volume_configuration.#: "0"
       volume.3039886685.host_path:                     "/tmp/dummy_volume"
       volume.3039886685.name:                          "dummy"
-Plan: 1 to add, 0 to change, 0 to destroy.
         """).strip() in output
 
     def test_task_volume_is_included(self):
@@ -116,5 +139,4 @@ Plan: 1 to add, 0 to change, 0 to destroy.
       volume.27251535.docker_volume_configuration.#: "0"
       volume.27251535.host_path:                     "/mnt/data"
       volume.27251535.name:                          "data_volume"
-Plan: 1 to add, 0 to change, 0 to destroy.
         """).strip() in output
