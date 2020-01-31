@@ -37,6 +37,7 @@ class TestCreateTaskdef(unittest.TestCase):
       revision:                                        <computed>
       volume.#:                                        "1"
       volume.3039886685.docker_volume_configuration.#: "0"
+      volume.3039886685.efs_volume_configuration.#:    "0"
       volume.3039886685.host_path:                     "/tmp/dummy_volume"
       volume.3039886685.name:                          "dummy"
         """).strip() in output
@@ -63,6 +64,7 @@ Plan: 2 to add, 0 to change, 0 to destroy.
       revision:                                        <computed>
       volume.#:                                        "1"
       volume.3039886685.docker_volume_configuration.#: "0"
+      volume.3039886685.efs_volume_configuration.#:    "0"
       volume.3039886685.host_path:                     "/tmp/dummy_volume"
       volume.3039886685.name:                          "dummy"
         """).strip() in output
@@ -71,7 +73,7 @@ Plan: 2 to add, 0 to change, 0 to destroy.
         output = check_output([
             'terraform',
             'plan',
-            '-var', 'task_role_arn_param=arn::iam:123',
+            '-var', 'task_role_arn_param=arn:aws:iam::111111111111:role/testrole',
             '-no-color',
             self.module_path],
             cwd=self.workdir
@@ -85,9 +87,10 @@ Plan: 2 to add, 0 to change, 0 to destroy.
       family:                                          "tf_ecs_taskdef_test_family"
       network_mode:                                    <computed>
       revision:                                        <computed>
-      task_role_arn:                                   "arn::iam:123"
+      task_role_arn:                                   "arn:aws:iam::111111111111:role/testrole"
       volume.#:                                        "1"
       volume.3039886685.docker_volume_configuration.#: "0"
+      volume.3039886685.efs_volume_configuration.#:    "0"
       volume.3039886685.host_path:                     "/tmp/dummy_volume"
       volume.3039886685.name:                          "dummy"
         """).strip() in output
@@ -96,7 +99,7 @@ Plan: 2 to add, 0 to change, 0 to destroy.
         output = check_output([
             'terraform',
             'plan',
-            '-var', 'execution_role_arn=arn::iam:123',
+            '-var', 'execution_role_arn=arn:aws:iam::111111111111:role/testrole',
             '-no-color',
             self.module_path],
             cwd=self.workdir
@@ -107,12 +110,13 @@ Plan: 2 to add, 0 to change, 0 to destroy.
       id:                                              <computed>
       arn:                                             <computed>
       container_definitions:                           "[{\\"cpu\\":10,\\"essential\\":true,\\"image\\":\\"hello-world:latest\\",\\"memory\\":128,\\"name\\":\\"web\\"}]"
-      execution_role_arn:                              "arn::iam:123"
+      execution_role_arn:                              "arn:aws:iam::111111111111:role/testrole"
       family:                                          "tf_ecs_taskdef_test_family"
       network_mode:                                    <computed>
       revision:                                        <computed>
       volume.#:                                        "1"
       volume.3039886685.docker_volume_configuration.#: "0"
+      volume.3039886685.efs_volume_configuration.#:    "0"
       volume.3039886685.host_path:                     "/tmp/dummy_volume"
       volume.3039886685.name:                          "dummy"
         """).strip() in output
@@ -137,6 +141,7 @@ Plan: 2 to add, 0 to change, 0 to destroy.
       revision:                                      <computed>
       volume.#:                                      "1"
       volume.27251535.docker_volume_configuration.#: "0"
+      volume.27251535.efs_volume_configuration.#:    "0"
       volume.27251535.host_path:                     "/mnt/data"
       volume.27251535.name:                          "data_volume"
         """).strip() in output
