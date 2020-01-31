@@ -33,7 +33,7 @@ class TestCreateTaskdef(unittest.TestCase):
       arn:                                             <computed>
       container_definitions:                           "[{\\"cpu\\":10,\\"essential\\":true,\\"image\\":\\"hello-world:latest\\",\\"memory\\":128,\\"name\\":\\"web\\"}]"
       family:                                          "tf_ecs_taskdef_test_family"
-      network_mode:                                    <computed>
+      network_mode:                                    "bridge"
       revision:                                        <computed>
       volume.#:                                        "1"
       volume.3039886685.docker_volume_configuration.#: "0"
@@ -60,7 +60,7 @@ Plan: 2 to add, 0 to change, 0 to destroy.
       arn:                                             <computed>
       container_definitions:                           "[{\\"cpu\\":10,\\"essential\\":true,\\"image\\":\\"hello-world:latest\\",\\"memory\\":128,\\"name\\":\\"web\\"}]"
       family:                                          "tf_ecs_taskdef_test_family_something"
-      network_mode:                                    <computed>
+      network_mode:                                    "bridge"
       revision:                                        <computed>
       volume.#:                                        "1"
       volume.3039886685.docker_volume_configuration.#: "0"
@@ -85,7 +85,7 @@ Plan: 2 to add, 0 to change, 0 to destroy.
       arn:                                             <computed>
       container_definitions:                           "[{\\"cpu\\":10,\\"essential\\":true,\\"image\\":\\"hello-world:latest\\",\\"memory\\":128,\\"name\\":\\"web\\"}]"
       family:                                          "tf_ecs_taskdef_test_family"
-      network_mode:                                    <computed>
+      network_mode:                                    "bridge"
       revision:                                        <computed>
       task_role_arn:                                   "arn:aws:iam::111111111111:role/testrole"
       volume.#:                                        "1"
@@ -112,7 +112,7 @@ Plan: 2 to add, 0 to change, 0 to destroy.
       container_definitions:                           "[{\\"cpu\\":10,\\"essential\\":true,\\"image\\":\\"hello-world:latest\\",\\"memory\\":128,\\"name\\":\\"web\\"}]"
       execution_role_arn:                              "arn:aws:iam::111111111111:role/testrole"
       family:                                          "tf_ecs_taskdef_test_family"
-      network_mode:                                    <computed>
+      network_mode:                                    "bridge"
       revision:                                        <computed>
       volume.#:                                        "1"
       volume.3039886685.docker_volume_configuration.#: "0"
@@ -137,7 +137,7 @@ Plan: 2 to add, 0 to change, 0 to destroy.
       arn:                                           <computed>
       container_definitions:                         "[{\\"cpu\\":10,\\"essential\\":true,\\"image\\":\\"hello-world:latest\\",\\"memory\\":128,\\"name\\":\\"web\\"}]"
       family:                                        "tf_ecs_taskdef_test_family"
-      network_mode:                                  <computed>
+      network_mode:                                  "bridge"
       revision:                                      <computed>
       volume.#:                                      "1"
       volume.27251535.docker_volume_configuration.#: "0"
